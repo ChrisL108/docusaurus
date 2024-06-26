@@ -7,6 +7,9 @@ type ProseProps = {
   children: ReactNode;
 };
 
+/**
+ * `prose` css classes are a tailwindcss utility used to style blog posts, articles, or documentation
+ */
 function Prose({ className = '', ...props }: ProseProps) {
   return (
     <div
