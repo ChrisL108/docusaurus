@@ -1,39 +1,63 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import Layout from '@theme/Layout';
+// src/components/MarkdocPage.tsx
+import React, { useMemo } from 'react';
 import Markdoc from '@markdoc/markdoc';
-import Note from './Note';
-import {
-  TabHeader, TabHeaderItem, TabPanel, TabPanelItem, Tabs
-} from './Tabs';
-import Fence from './Fence';
+import DocRootLayout from '@theme/DocRoot/Layout';
+import DocSidebar from '@theme/DocSidebar';
+import { useDocsSidebar } from '@docusaurus/theme-common/internal';
+import components from './markdoc';
 import Prose from './Prose';
 
-
-const components = {
-  Note,
-  Tabs,
-  TabHeader,
-  TabHeaderItem,
-  TabPanel,
-  TabPanelItem,
-  Fence,
+interface MarkdocPageProps {
+  doc: {
+    markdoc: {
+      content: any;
+    };
+    frontmatter: {
+      pageTitle: string;
+      route: string;
+      // ... other frontmatter properties
+    };
+  };
+  path: string;
 }
 
-const MarkdocPage = ({ doc }) => {
+const MarkdocPage: React.FC<MarkdocPageProps> = ({ doc, path }) => {
   console.log("MarkdocPage doc", doc);
 
-  const render = useMemo(() => Markdoc.renderers.react(doc, React, { components }), [doc]);
+  const sidebar = useDocsSidebar();
+  console.log("MarkdocPage sidebar", sidebar);
+
+  const renderedContent = useMemo(() => {
+    if (doc && doc.markdoc && doc.markdoc.content) {
+      return Markdoc.renderers.react(doc.markdoc.content, React, { components });
+    }
+    return null;
+  }, [doc]);
+
+  console.log("MarkdocPage renderedContent", renderedContent);
+
+  if (!renderedContent) {
+    return <div>No content available</div>;
+  }
+
 
   return (
-    <Layout title="Markdoc Page" description="Rendering Markdoc content">
-      <div className="container margin-vert--lg">
-        <div className="row">
-          <div className="col col--8 col--offset-2">
-            <Prose>{render}</Prose>
-          </div>
-        </div>
+    <DocRootLayout>
+      <div className="row">
+        {/* <div className="col col--3">
+          {sidebar && <DocSidebar
+            sidebar={sidebar.items}
+            path={path}
+            onCollapse={() => { }}
+            isHidden={false}
+          />}
+        </div> */}
+        <main className="col col--9">
+          <h1>{doc.frontmatter.pageTitle}</h1>
+          <Prose>{renderedContent}</Prose>
+        </main>
       </div>
-    </Layout>
+    </DocRootLayout>
   );
 };
 

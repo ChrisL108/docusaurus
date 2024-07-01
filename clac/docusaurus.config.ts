@@ -1,10 +1,8 @@
-const path = require('path');
-import { themes as prismThemes } from 'prism-react-renderer';
-// const pRR = require('prism-react-renderer');
+import path from 'path';
 
 console.log("Docusaurus config loaded");
 
-module.exports = {
+const config = {
   title: 'My Site',
   url: 'https://yoursite.com',
   baseUrl: '/',
@@ -13,22 +11,23 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'your-org',
   projectName: 'your-project',
+  staticDirectories: ['static'],
   presets: [
     [
       '@docusaurus/preset-classic',
       {
-        docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/your-org/your-project/edit/main/website/',
-          exclude: [
-            '**/markdoc/**', // Ignore all files in the markdoc directory
-            '**/*.markdoc.md', // Ignore all files with the .markdoc.md extension
-          ],
-        },
-        blog: {
-          showReadingTime: true,
-          editUrl: 'https://github.com/your-org/your-project/edit/main/website/blog/',
-        },
+        debug: true,
+        docs: false,
+        // docs: {
+        //   // path: 'docs',
+        //   // routeBasePath: 'docs',
+        //   sidebarPath: require.resolve('./sidebars.js'),
+        //   exclude: [
+        //     '**/markdoc/**',
+        //     '**/*.markdoc.md',
+        //   ],
+        // },
+        blog: false,
         theme: {
           customCss: ['./src/css/custom.css'],
         },
@@ -36,12 +35,12 @@ module.exports = {
     ],
   ],
   plugins: [
+    // '@docusaurus/plugin-debug',
     path.resolve(__dirname, 'plugins/markdoc-plugin.js'),
-    async function myPlugin(context, options) {
+    async function tailwindPlugin(context, options) {
       return {
         name: "docusaurus-tailwindcss",
         configurePostCss(postcssOptions) {
-          // Appends TailwindCSS and AutoPrefixer.
           postcssOptions.plugins.push(require("tailwindcss"));
           postcssOptions.plugins.push(require("autoprefixer"));
           return postcssOptions;
@@ -49,4 +48,31 @@ module.exports = {
       };
     },
   ],
+  // themeConfig: {
+  //   navbar: {
+  //     title: 'My Site',
+  //     logo: {
+  //       alt: 'My Site Logo',
+  //       src: 'img/logo.svg',
+  //     },
+  //     items: [
+  //       {
+  //         type: 'doc',
+  //         docId: 'intro',
+  //         position: 'left',
+  //         label: 'Docs',
+  //       },
+  //       // Add more navbar items as needed
+  //     ],
+  //   },
+  //   footer: {
+  //     style: 'dark',
+  //     links: [
+  //       // Add footer links as needed
+  //     ],
+  //     copyright: `Copyright © ${new Date().getFullYear()} Your Project, Inc. Built with Docusaurus.`,
+  //   },
+  // },
 };
+
+export default config;
