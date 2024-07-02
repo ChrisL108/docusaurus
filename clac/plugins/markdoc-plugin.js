@@ -20,7 +20,8 @@ function transformSidebarData(root) {
       const item = {
         type: 'doc',
         id: doc.key,
-        label: doc.pageTitle,
+        label: doc.linkTitle || doc.pageTitle,
+        href: `/docs${parentPath}/${doc.key}`,
         link: {
           type: 'doc',
           id: doc.key,
@@ -76,6 +77,7 @@ module.exports = function (context, options) {
           console.log('-------------------------');
           console.log(`/docs${route}`);
           console.log('-------------------------\n');
+          console.log('doc', doc);
 
           addRoute({
             // path: route,

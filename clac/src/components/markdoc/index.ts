@@ -9,29 +9,30 @@ import NumberedList from './NumberedList';
 import NumberedListItem from './NumberedListItem';
 import Video from './Video';
 import DefinitionHover from './DefinitionHover';
-import Tabs from './Tabs';
 import CompanyName from './CompanyName';
 import CompanyEmail from './CompanyEmail';
 import LinkCard from './LinkCard';
-import Note from './Note';
+import Tabs, { TabHeader, TabHeaderItem, TabPanel, TabPanelItem } from './Tabs';
+import Prose from '../Prose';
 
 export default {
+  Fence,
+  Image,
   CompanyName,
   CompanyEmail,
   Callout,
   LinkGrid,
   LinkGridLink,
+  Tabs,
+  TabHeader,
+  TabHeaderItem,
+  TabPanel,
+  TabPanelItem,
   NumberedList,
   NumberedListItem,
   Feedback,
   Video,
   DefinitionHover,
   LinkCard,
-  Content,
-  Fence,
-  Gradient,
-  GradientIcon,
-  Image,
-  Note,
-  ...Tabs,
+  Prose,
 };

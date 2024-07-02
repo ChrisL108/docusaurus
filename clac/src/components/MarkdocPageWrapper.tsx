@@ -1,7 +1,7 @@
 // src/components/MarkdocPageWrapper.tsx
 import React, { useEffect, useState } from 'react';
 import { HtmlClassNameProvider } from '@docusaurus/theme-common';
-import { DocProvider, DocsSidebarProvider, ScrollControllerProvider, AnnouncementBarProvider } from '@docusaurus/theme-common/internal';
+import { DocProvider, DocsSidebarProvider, ScrollControllerProvider, AnnouncementBarProvider, DocSidebarItemsExpandedStateProvider } from '@docusaurus/theme-common/internal';
 import { useLocation } from '@docusaurus/router';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import MarkdocPage from './MarkdocPage';
@@ -47,11 +47,13 @@ const MarkdocPageWrapper: React.FC<MarkdocPageWrapperProps> = ({ doc, metadata }
         <HtmlClassNameProvider className={`docs-doc-page docs-version-current`}>
             <DocProvider content={metadata}>
                 <AnnouncementBarProvider>
-                    <ScrollControllerProvider>
-                        <DocsSidebarProvider name="markdoc-docs" items={sidebar}>
-                            <MarkdocPage doc={content} path={location.pathname} />
-                        </DocsSidebarProvider>
-                    </ScrollControllerProvider>
+                    <DocSidebarItemsExpandedStateProvider>
+                        <ScrollControllerProvider>
+                            <DocsSidebarProvider name="markdoc-docs" items={sidebar}>
+                                <MarkdocPage doc={content} path={location.pathname} />
+                            </DocsSidebarProvider>
+                        </ScrollControllerProvider>
+                    </DocSidebarItemsExpandedStateProvider>
                 </AnnouncementBarProvider>
             </DocProvider>
         </HtmlClassNameProvider>

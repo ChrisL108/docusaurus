@@ -74,7 +74,7 @@ const GradientIcon = memo(
 
           <circle cx={20} cy={20} r={12} fill={`url(#${id}-gradient)`} />
         </svg>
-        <p>ICON GOES HERE</p>
+        <p className='text-red-400'>ICON</p>
       </div>
     );
   },

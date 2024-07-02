@@ -19,7 +19,7 @@ function Image({ src, alt }: ImageProps) {
         onClick={() => setOpen(true)}
         aria-hidden="true"
       />
-      <p>DIALOG COMPONENT GOES HERE</p>
+      <p className='text-red-500'>DIALOG COMPONENT GOES HERE</p>
       {/* <Dialog
         open={open}
         setOpen={setOpen}

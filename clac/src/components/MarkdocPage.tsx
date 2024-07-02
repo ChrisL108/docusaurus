@@ -43,7 +43,7 @@ const MarkdocPage: React.FC<MarkdocPageProps> = ({ doc, path }) => {
 
   return (
     <DocRootLayout>
-      <div className="row">
+      <div className="row p-6">
         {/* <div className="col col--3">
           {sidebar && <DocSidebar
             sidebar={sidebar.items}
@@ -53,7 +53,7 @@ const MarkdocPage: React.FC<MarkdocPageProps> = ({ doc, path }) => {
           />}
         </div> */}
         <main className="col col--9">
-          <h1>{doc.frontmatter.pageTitle}</h1>
+          {/* <h1>{doc.frontmatter.pageTitle}</h1> */}
           <Prose>{renderedContent}</Prose>
         </main>
       </div>

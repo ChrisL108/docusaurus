@@ -17,16 +17,16 @@ const config = {
       '@docusaurus/preset-classic',
       {
         debug: true,
-        docs: false,
-        // docs: {
-        //   // path: 'docs',
-        //   // routeBasePath: 'docs',
-        //   sidebarPath: require.resolve('./sidebars.js'),
-        //   exclude: [
-        //     '**/markdoc/**',
-        //     '**/*.markdoc.md',
-        //   ],
-        // },
+        // docs: false,
+        docs: {
+          // path: 'docs',
+          // routeBasePath: 'docs',
+          sidebarPath: require.resolve('./sidebars.js'),
+          // exclude: [
+          //   '**/markdoc/**',
+          //   '**/*.markdoc.md',
+          // ],
+        },
         blog: false,
         theme: {
           customCss: ['./src/css/custom.css'],
@@ -48,6 +48,18 @@ const config = {
       };
     },
   ],
+  themeConfig: {
+    prism: {
+      defaultLanguage: 'text',
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
+    },
+
+  },
   // themeConfig: {
   //   navbar: {
   //     title: 'My Site',
