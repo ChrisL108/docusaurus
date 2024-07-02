@@ -1,13 +1,13 @@
 // plugins/markdoc-plugin.js
 
-const CONTENT_API_URL = 'https://umbrella.dev1.devspace.lsea4.livelyvideo.tv/api/v1/markdoc';
-const SIDEBAR_API_URL = 'https://umbrella.dev1.devspace.lsea4.livelyvideo.tv/api/v1/markdoc/navigation';
+// const CONTENT_API_URL = 'https://umbrella.dev1.devspace.lsea4.livelyvideo.tv/api/v1/markdoc';
+const SIDEBAR_API_URL = 'https://umbrella.chris.devspace.lsea4.livelyvideo.tv/api/v1/markdoc/navigation';
 
-async function fetchDocContent(docId) {
-  console.log('fetching doc', docId);
-  const response = await fetch(`${CONTENT_API_URL}?path=${docId}`);
-  return response.json();
-}
+// async function fetchDocContent(docId) {
+//   console.log('fetching doc', docId);
+//   const response = await fetch(`${CONTENT_API_URL}?path=${docId}`);
+//   return response.json();
+// }
 
 async function fetchSidebar() {
   const response = await fetch(SIDEBAR_API_URL);

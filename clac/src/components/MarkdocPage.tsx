@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import Markdoc from '@markdoc/markdoc';
 import DocRootLayout from '@theme/DocRoot/Layout';
 import DocSidebar from '@theme/DocSidebar';
+import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import { useDocsSidebar } from '@docusaurus/theme-common/internal';
 import components from './markdoc';
 import Prose from './Prose';
@@ -40,7 +41,6 @@ const MarkdocPage: React.FC<MarkdocPageProps> = ({ doc, path }) => {
     return <div>No content available</div>;
   }
 
-
   return (
     <DocRootLayout>
       <div className="row p-6">
@@ -53,7 +53,9 @@ const MarkdocPage: React.FC<MarkdocPageProps> = ({ doc, path }) => {
           />}
         </div> */}
         <main className="col col--9">
-          {/* <h1>{doc.frontmatter.pageTitle}</h1> */}
+          {/* // TODO - Swizzle Breadcrumb component, not working for some pages  */}
+          <DocBreadcrumbs />
+          <h1 className='font-display text-3xl tracking-tight text-gray-900 pb-8'>{doc.frontmatter.pageTitle}</h1>
           <Prose>{renderedContent}</Prose>
         </main>
       </div>

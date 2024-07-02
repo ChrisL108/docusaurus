@@ -6,7 +6,7 @@ import type { WrapperProps } from '@docusaurus/types';
 type Props = WrapperProps<typeof DocSidebarType>;
 
 export default function DocSidebarWrapper(props: Props): JSX.Element {
-  console.log("DocSidebarWrapper props", props)
+  // console.log("DocSidebarWrapper props", props)
   return (
     <>
       <DocSidebar {...props} />

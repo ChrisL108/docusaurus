@@ -19,6 +19,7 @@ const config = {
         debug: true,
         // docs: false,
         docs: {
+          breadcrumbs: true,
           // path: 'docs',
           // routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
@@ -58,7 +59,6 @@ const config = {
         autoCollapseCategories: true,
       },
     },
-
   },
   // themeConfig: {
   //   navbar: {

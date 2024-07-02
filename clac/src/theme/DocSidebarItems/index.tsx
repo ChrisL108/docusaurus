@@ -16,7 +16,7 @@ import type { Props } from '@theme/DocSidebarItems';
 
 function DocSidebarItems({ items, ...props }: Props): JSX.Element {
     const visibleItems = useVisibleSidebarItems(items, props.activePath);
-    console.log('DocSidebarItems props:', { items, ...props });
+    // console.log('DocSidebarItems props:', { items, ...props });
     return (
         <DocSidebarItemsExpandedStateProvider>
             {visibleItems.map((item, index) => (
