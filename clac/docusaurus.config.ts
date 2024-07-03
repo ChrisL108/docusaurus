@@ -16,10 +16,10 @@ const config = {
     [
       '@docusaurus/preset-classic',
       {
-        debug: true,
+        // debug: true,
         // docs: false,
         docs: {
-          breadcrumbs: true,
+          // breadcrumbs: true,
           // path: 'docs',
           // routeBasePath: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
@@ -49,17 +49,17 @@ const config = {
       };
     },
   ],
-  themeConfig: {
-    prism: {
-      defaultLanguage: 'text',
-    },
-    docs: {
-      sidebar: {
-        hideable: true,
-        autoCollapseCategories: true,
-      },
-    },
-  },
+  // themeConfig: {
+  //   prism: {
+  //     defaultLanguage: 'text',
+  //   },
+  //   docs: {
+  //     sidebar: {
+  //       hideable: true,
+  //       autoCollapseCategories: true,
+  //     },
+  //   },
+  // },
   // themeConfig: {
   //   navbar: {
   //     title: 'My Site',

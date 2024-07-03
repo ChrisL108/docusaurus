@@ -28,7 +28,7 @@ export default function DocSidebarItemLink({
     // const isActive = isActiveSidebarItem(item, activePath);
     const isActive = item.href === activePath;
     const isInternalLink = isInternalUrl(href);
-    // console.log('DocSidebarItemLink props:', { item, onItemClick, activePath, level, index, ...props, isActive });
+    console.log('DocSidebarItemLink props:', { item, onItemClick, activePath, level, index, ...props, isActive });
     // if (isActive) {
     //     console.log('---------------')
     //     console.log('ACTIVE DocSidebarItemLink props:', { item, onItemClick, activePath, level, index, ...props, isActive });

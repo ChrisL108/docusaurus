@@ -2,11 +2,9 @@
 import React, { useMemo } from 'react';
 import Markdoc from '@markdoc/markdoc';
 import DocRootLayout from '@theme/DocRoot/Layout';
-import DocSidebar from '@theme/DocSidebar';
-import DocBreadcrumbs from '@theme/DocBreadcrumbs';
-import { useDocsSidebar } from '@docusaurus/theme-common/internal';
 import components from './markdoc';
 import Prose from './Prose';
+import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 
 interface MarkdocPageProps {
   doc: {
@@ -25,8 +23,6 @@ interface MarkdocPageProps {
 const MarkdocPage: React.FC<MarkdocPageProps> = ({ doc, path }) => {
   console.log("MarkdocPage doc", doc);
 
-  const sidebar = useDocsSidebar();
-  console.log("MarkdocPage sidebar", sidebar);
 
   const renderedContent = useMemo(() => {
     if (doc && doc.markdoc && doc.markdoc.content) {
@@ -44,14 +40,6 @@ const MarkdocPage: React.FC<MarkdocPageProps> = ({ doc, path }) => {
   return (
     <DocRootLayout>
       <div className="row p-6">
-        {/* <div className="col col--3">
-          {sidebar && <DocSidebar
-            sidebar={sidebar.items}
-            path={path}
-            onCollapse={() => { }}
-            isHidden={false}
-          />}
-        </div> */}
         <main className="col col--9">
           {/* // TODO - Swizzle Breadcrumb component, not working for some pages  */}
           <DocBreadcrumbs />

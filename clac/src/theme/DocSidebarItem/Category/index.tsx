@@ -170,9 +170,7 @@ export default function DocSidebarItemCategory({
         }
     }, [collapsible, expandedItem, index, setCollapsed, autoCollapseCategories]);
 
-    if (href.includes('introduction/types-of-streaming')) {
-        console.log('DocSidebarItemCategory props:', { item, onItemClick, activePath, level, index, ...props });
-    }
+    // console.log('DocSidebarItemCategory props:', { item, onItemClick, activePath, level, index, ...props });
     return (
         <li
             className={clsx(
