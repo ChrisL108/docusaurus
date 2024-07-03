@@ -49,17 +49,18 @@ const config = {
       };
     },
   ],
-  // themeConfig: {
-  //   prism: {
-  //     defaultLanguage: 'text',
-  //   },
-  //   docs: {
-  //     sidebar: {
-  //       hideable: true,
-  //       autoCollapseCategories: true,
-  //     },
-  //   },
-  // },
+  themeConfig: {
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
+    },
+    tableOfContents: {
+      minHeadingLevel: 2,
+      maxHeadingLevel: 3,
+    },
+  },
   // themeConfig: {
   //   navbar: {
   //     title: 'My Site',

@@ -44,24 +44,22 @@ module.exports = function (context, options) {
   return {
     name: 'markdoc-plugin',
     async loadContent() {
-      console.log('loadContent -------');
       const sidebarData = await fetchSidebar();
       const transformedSidebar = transformSidebarData(sidebarData);
-      // console.log('transformedSidebar', transformedSidebar);
+      console.log('transformedSidebar', transformedSidebar);
       return { sidebar: transformedSidebar, rawSidebar: sidebarData };
     },
     async contentLoaded({ content, actions }) {
-      console.log('contentLoaded -------');
       // console.log('contentLoaded', content);
       const { addRoute, createData, setGlobalData } = actions;
       const { sidebar, rawSidebar } = content;
 
       setGlobalData({ sidebar, rawSidebar });
 
-      const sidebarPath = await createData(
-        'sidebar.json',
-        JSON.stringify(sidebar)
-      );
+      // const sidebarPath = await createData(
+      //   'sidebar.json',
+      //   JSON.stringify(sidebar)
+      // );
 
       async function addRoutesRecursively(documents, parentPath = '') {
         for (const doc of Object.values(documents)) {
@@ -77,16 +75,17 @@ module.exports = function (context, options) {
           console.log('-------------------------');
           console.log(`/docs${route}`);
           console.log('-------------------------\n');
-          console.log('doc', doc);
+          // console.log('doc', doc);
 
           addRoute({
             // path: route,
             path: `/docs${route}`,
             component: '@site/src/components/MarkdocPageWrapper',
+            // component: '@theme/Docs',
             exact: true,
             modules: {
               doc: docDataPath,
-              sidebar: sidebarPath,
+              // sidebar: sidebarPath,
               metadata: await createData(
                 `${doc.key}-metadata.json`,
                 JSON.stringify({

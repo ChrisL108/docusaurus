@@ -6,6 +6,7 @@ import { useLocation } from '@docusaurus/router';
 import { usePluginData } from '@docusaurus/useGlobalData';
 import MarkdocPage from './MarkdocPage';
 import type { PropDocContent, PropSidebarItem } from '@docusaurus/plugin-content-docs';
+import DocRootLayout from '@theme/DocRoot/Layout';
 
 interface MarkdocPageWrapperProps {
     doc: any;
@@ -33,31 +34,29 @@ const MarkdocPageWrapper: React.FC<MarkdocPageWrapperProps> = ({ doc, metadata }
         };
 
         fetchContent();
-    }, [doc.route, CONTENT_API_URL]);
+    }, [doc.route]);
 
-    console.log("MarkdocPageWrapper doc", doc);
-    console.log("MarkdocPageWrapper sidebar", sidebar);
-    console.log("MarkdocPageWrapper metadata", metadata);
+    // console.log("MarkdocPageWrapper sidebar", sidebar);
 
-
-    if (!content) {
-        return <div>Loading...</div>;
-    }
 
     return (
+
         <HtmlClassNameProvider className={`docs-doc-page docs-version-current`}>
             <DocProvider content={metadata}>
                 <AnnouncementBarProvider>
                     <DocSidebarItemsExpandedStateProvider>
                         <ScrollControllerProvider>
                             <DocsSidebarProvider name="markdoc-docs" items={sidebar}>
-                                <MarkdocPage doc={content} path={location.pathname} />
+                                <DocRootLayout>
+                                    <MarkdocPage doc={content} path={location.pathname} />
+                                </DocRootLayout>
                             </DocsSidebarProvider>
                         </ScrollControllerProvider>
                     </DocSidebarItemsExpandedStateProvider>
                 </AnnouncementBarProvider>
             </DocProvider>
         </HtmlClassNameProvider>
+
     );
 };
 

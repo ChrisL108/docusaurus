@@ -13,6 +13,19 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+:root {
+	/* --ifm-color-primary: #25c2a0;
+	--ifm-sidebar-background-color: #f5f5f5; */
+	/* ... other customizations */
+  }
+  
+  /* Dark mode overrides */
+
+  /* [data-theme='dark'] {
+	--ifm-color-primary: #4fd1b9;
+	--ifm-sidebar-background-color: #242526;
+  } */
+
 @layer utilities {
 	.h-screen-hack {
 		height: 100vh;

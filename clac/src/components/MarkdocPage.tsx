@@ -1,7 +1,6 @@
 // src/components/MarkdocPage.tsx
 import React, { useMemo } from 'react';
 import Markdoc from '@markdoc/markdoc';
-import DocRootLayout from '@theme/DocRoot/Layout';
 import components from './markdoc';
 import Prose from './Prose';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
@@ -34,20 +33,18 @@ const MarkdocPage: React.FC<MarkdocPageProps> = ({ doc, path }) => {
   console.log("MarkdocPage renderedContent", renderedContent);
 
   if (!renderedContent) {
-    return <div>No content available</div>;
+    return <div><p className='p-8'>Loading...</p></div>;
   }
 
   return (
-    <DocRootLayout>
-      <div className="row p-6">
-        <main className="col col--9">
-          {/* // TODO - Swizzle Breadcrumb component, not working for some pages  */}
-          <DocBreadcrumbs />
-          <h1 className='font-display text-3xl tracking-tight text-gray-900 pb-8'>{doc.frontmatter.pageTitle}</h1>
-          <Prose>{renderedContent}</Prose>
-        </main>
-      </div>
-    </DocRootLayout>
+    <div className="row p-6">
+      <main className="col col--9">
+        {/* // TODO - Swizzle Breadcrumb component, not working for some pages  */}
+        <DocBreadcrumbs />
+        <h1 className='font-display text-3xl tracking-tight text-gray-900 pb-8'>{doc.frontmatter.pageTitle}</h1>
+        <Prose>{renderedContent}</Prose>
+      </main>
+    </div>
   );
 };
 
